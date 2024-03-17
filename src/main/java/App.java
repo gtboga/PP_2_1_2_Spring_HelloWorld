@@ -5,8 +5,19 @@ public class App {
     public static void main(String[] args) {
         ApplicationContext applicationContext =
                 new AnnotationConfigApplicationContext(AppConfig.class);
-        HelloWorld bean =
+        HelloWorld bean1 =
                 (HelloWorld) applicationContext.getBean("helloworld");
-        System.out.println(bean.getMessage());
+        HelloWorld bean2 =
+                (HelloWorld) applicationContext.getBean("helloworld");
+        System.out.println(bean1.getMessage());
+        System.out.println(bean2.getMessage());
+        System.out.println("Два объекта HelloWorld равны - " + (bean1 == bean2));
+
+        Cat cat1 = (Cat) applicationContext.getBean("cat");
+        Cat cat2 = (Cat) applicationContext.getBean("cat");
+        System.out.println(cat1);
+        System.out.println(cat2);
+        System.out.println("Два объекта Cat равны - " + (cat1 == cat2));
+
     }
 }
